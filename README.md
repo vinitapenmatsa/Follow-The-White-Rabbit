@@ -15,8 +15,8 @@ Run directly using jar:
   4. enter the required inputs Eg . difficulty level , min word length , max words per anangram.<br/>
   
   
-Run the Docker file:
-  Docker Image is attached , use the following commands to build and run imag<br/>
+Run the Docker file:<br/>
+  Docker Image is attached , use the following commands to build and run image<br/>
   docker build -t {dockerimagename}<br/>
   docker run -i -t {dockerimagename}<br/>
   
@@ -42,14 +42,14 @@ Solution can be divided in 3 parts / 3 levels of optimization.
   For example if min_word_length is 5 , we can narrow down to about 998 words vs 99175 words.<br/>
   - I've used Trie ( with hashmap ) to implement my dictionary. Ideally I would use DAWG ( directed acyclic word graphs ) if space is a concern because DAWGs reduce the number of nodes. Since we are aiming for lookup performance , I stuck to a trie , as it is easy to implement )
     
- 2.  Creating a service that generates possible anagrams using the Minified Dictionary ( optimizing by using the dictionay to generate phrases )<br/>
+ 2.  Creating a service that generates possible anagrams using the Minified Dictionary ( optimizing by using the dictionary to generate phrases )<br/>
     
  - At this level , instead of blindly going through all permutations using the letters of the phrase , we just use the          minified dictionary to generate possible phrases.<br/>
  - This approach improves the performance drastically </br>
    For example if min_word_length is 5 (998 words) and number of anangrams per phrase = 3 , we generate atmost 998 * 997 * 996 phrases vs 16! ( 16 is the no of letters 
    in 'poultry outwits ants') <br/>
     
- 3.  Parallel processing using one thread for each letter of the phrase.
+ 3.  Parallel processing using one thread for each letter in the phrase.
  
   -  The key is to return from all other threads if any one of them is successful at finding the key.<br/> 
   -  Performance again depends on host machine's specifications. Mine was 4-core , 4GB RAM and it took about 9 minutes to find the hard key.<br/>
