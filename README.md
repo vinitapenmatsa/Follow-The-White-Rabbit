@@ -30,7 +30,7 @@ Hard Key - about 9 minutes ( screenshots attached below )
 
 Solution can be divided in 3 parts / 3 levels of optimization.
 
- 1.  Building a Minified Dictionary ( optimizing by dicarding all the imopossible words )<br/>
+ 1.  Building a Minified Dictionary ( optimizing by discarding all the impossible words )<br/>
    
   - At this level , I've assumed that the following words are useless
       - words whose length > length of the given phrase
